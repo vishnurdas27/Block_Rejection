@@ -1,0 +1,159 @@
+{
+  "best_model_name": "Gradient Boosting",
+  "feature_order": [
+    "temperature",
+    "density",
+    "energy",
+    "pouring_time",
+    "flowrate",
+    "tilt_angle",
+    "bin_height",
+    "grog_type",
+    "quality",
+    "unit_wgt",
+    "module",
+    "mould_type",
+    "sub_location"
+  ],
+  "cat_cols": [
+    "bin_height",
+    "grog_type",
+    "quality",
+    "module",
+    "mould_type",
+    "sub_location"
+  ],
+  "cat_options": {
+    "bin_height": [
+      "3 to 4 Feet",
+      "4 to 5 Feet",
+      "5 to 6 Feet",
+      "6 to 8 Feet",
+      "7 Feet Bottom",
+      "Less than 3 Feet"
+    ],
+    "grog_type": [
+      "Fresh (2-6 mm)",
+      "Fresh (6-18 mm)",
+      "MPBV2",
+      "MPBV3",
+      "Recycle (2-6 mm)",
+      "Recycle (6-18mm)",
+      "System"
+    ],
+    "quality": [
+      "1681 RN",
+      "1681 RR",
+      "1681 RTD",
+      "1685 RR",
+      "1685 RT",
+      "1685 RTD",
+      "1699 RS",
+      "1711 RN",
+      "1711 RR",
+      "1711 RT",
+      "1711 RTD",
+      "1851 RN",
+      "1851 RT"
+    ],
+    "module": [
+      "BR 01",
+      "DA 01",
+      "DW 01",
+      "PA 02",
+      "PA 03",
+      "PT 01",
+      "PV 01",
+      "PV 02",
+      "PW 01",
+      "PW 03",
+      "SS 01",
+      "SS 02",
+      "SW 01",
+      "TH 01",
+      "TS 01"
+    ],
+    "mould_type": [
+      "Heavy",
+      "Light",
+      "Special",
+      "Standard"
+    ],
+    "sub_location": [
+      "AZS",
+      "Plant 1",
+      "Plant 2"
+    ]
+  },
+  "numeric_ranges": {
+    "temperature": {
+      "min": 1680.9,
+      "max": 1909.0,
+      "mean": 1809.849
+    },
+    "density": {
+      "min": 3.45,
+      "max": 4.09,
+      "mean": 3.801
+    },
+    "energy": {
+      "min": 350.3,
+      "max": 3079.8,
+      "mean": 1700.907
+    },
+    "pouring_time": {
+      "min": 5.0,
+      "max": 465.6,
+      "mean": 54.998
+    },
+    "flowrate": {
+      "min": 0.5,
+      "max": 47.748,
+      "mean": 6.047
+    },
+    "tilt_angle": {
+      "min": 0.0,
+      "max": 27.146,
+      "mean": 13.098
+    },
+    "unit_wgt": {
+      "min": 6.28,
+      "max": 1222.0,
+      "mean": 133.246
+    }
+  },
+  "all_results": [
+    {
+      "model": "Logistic Regression",
+      "accuracy": 73.56,
+      "precision": 0.516,
+      "recall": 0.7291,
+      "f1": 0.6043,
+      "roc_auc": 0.8277
+    },
+    {
+      "model": "Decision Tree",
+      "accuracy": 86.5,
+      "precision": 0.7802,
+      "recall": 0.7133,
+      "f1": 0.7453,
+      "roc_auc": 0.8485
+    },
+    {
+      "model": "Random Forest",
+      "accuracy": 88.38,
+      "precision": 0.8882,
+      "recall": 0.6637,
+      "f1": 0.7597,
+      "roc_auc": 0.9201
+    },
+    {
+      "model": "Gradient Boosting",
+      "accuracy": 89.44,
+      "precision": 0.8586,
+      "recall": 0.7404,
+      "f1": 0.7952,
+      "roc_auc": 0.9232
+    }
+  ]
+}

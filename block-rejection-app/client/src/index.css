@@ -1,0 +1,76 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-deep:    #050e1f;
+  --bg-card:    #0a1628;
+  --bg-input:   #0d1e36;
+  --border:     #1a3055;
+  --border-hi:  #2563eb;
+  --blue-1:     #1e40af;
+  --blue-2:     #2563eb;
+  --blue-3:     #3b82f6;
+  --blue-4:     #60a5fa;
+  --blue-5:     #93c5fd;
+  --cyan:       #06b6d4;
+  --green:      #10b981;
+  --red:        #ef4444;
+  --amber:      #f59e0b;
+  --text-1:     #f0f6ff;
+  --text-2:     #94a3b8;
+  --text-3:     #64748b;
+  --mono:       'JetBrains Mono', monospace;
+  --sans:       'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg-deep);
+  color: var(--text-1);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* focus ring */
+*:focus-visible { outline: 2px solid var(--blue-3); outline-offset: 2px; }
+
+/* input base */
+input, select {
+  font-family: var(--sans);
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-1);
+  border-radius: 8px;
+  padding: 10px 14px;
+  width: 100%;
+  font-size: 14px;
+  transition: border-color .2s, box-shadow .2s;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--blue-2);
+  box-shadow: 0 0 0 3px rgba(37,99,235,.2);
+}
+input::placeholder { color: var(--text-3); }
+
+select option { background: var(--bg-input); }
+
+button { font-family: var(--sans); cursor: pointer; }
+
+/* animations */
+@keyframes fadeIn   { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes slideIn  { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: none; } }
+@keyframes pulse    { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+@keyframes spin     { to { transform: rotate(360deg); } }
+@keyframes glowPulse{ 0%,100%{box-shadow:0 0 20px rgba(37,99,235,.3);}50%{box-shadow:0 0 40px rgba(37,99,235,.6);} }
+
+.animate-fadeIn  { animation: fadeIn  .4s ease both; }
+.animate-slideIn { animation: slideIn .3s ease both; }
+.animate-pulse   { animation: pulse   1.5s infinite; }
+.animate-spin    { animation: spin    .8s linear infinite; }
