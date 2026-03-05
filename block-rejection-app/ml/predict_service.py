@@ -1,7 +1,4 @@
-"""
-Flask ML microservice — Block Rejection Prediction
-Runs on port 5001, called internally by the Node backend.
-"""
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import joblib, json, numpy as np, os
@@ -13,6 +10,7 @@ BASE = os.path.dirname(__file__)
 model    = joblib.load(os.path.join(BASE, 'best_model.joblib'))
 scaler   = joblib.load(os.path.join(BASE, 'scaler.joblib'))
 encoders = joblib.load(os.path.join(BASE, 'encoders.joblib'))
+port = int(os.environ.get('PORT', 5001))
 
 with open(os.path.join(BASE, 'meta.json')) as f:
     meta = json.load(f)
@@ -71,4 +69,4 @@ def predict():
 
 if __name__ == '__main__':
     print(f"ML service starting — model: {meta['best_model_name']}")
-    app.run(port=5001, debug=False)
+    app.run(host='0.0.0.0', port=port, debug=False)
