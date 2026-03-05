@@ -48,12 +48,15 @@ export default function Predictor() {
   useEffect(() => {
     axios.get('/api/meta').then(r => {
       setMeta(r.data);
-      // set first option as default for selects
-      const catDefaults = {};
-      Object.entries(r.data.cat_options).forEach(([k, opts]) => {
-        catDefaults[k] = opts[0];
-      });
-      setForm(prev => ({ ...prev, ...catDefaults }));
+      
+      // ADD THIS IF STATEMENT:
+      if (r.data.cat_options) {
+        const catDefaults = {};
+        Object.entries(r.data.cat_options).forEach(([k, opts]) => {
+          catDefaults[k] = opts[0];
+        });
+        setForm(prev => ({ ...prev, ...catDefaults }));
+      }
     }).catch(() => setApiErr('⚠️  Cannot reach backend — make sure the server is running.'));
   }, []);
 
@@ -184,7 +187,7 @@ export default function Predictor() {
                     style={errors[key] ? { borderColor: '#ef4444' } : {}}
                   >
                     {!meta && <option>Loading…</option>}
-                    {meta?.cat_options[key]?.map(opt => (
+                    {meta?.cat_options?.[key]?.map(opt => (
                       <option key={opt} value={opt}>{opt}</option>
                     ))}
                   </select>
