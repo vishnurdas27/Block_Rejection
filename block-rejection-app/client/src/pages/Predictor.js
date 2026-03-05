@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import apiClient from '../api';
 import Card, { CardTitle } from '../components/Card';
 import ResultPanel from '../components/ResultPanel';
 
@@ -46,7 +46,7 @@ export default function Predictor() {
   const [apiErr,  setApiErr]  = useState('');
 
   useEffect(() => {
-    axios.get('/api/meta').then(r => {
+    apiClient.get('/api/meta').then(r => {
       setMeta(r.data);
       
       // ADD THIS IF STATEMENT:
@@ -88,7 +88,7 @@ export default function Predictor() {
     try {
       const payload = { ...form };
       NUMERIC_FIELDS.forEach(f => { payload[f.key] = parseFloat(payload[f.key]); });
-      const { data } = await axios.post('/api/predict', payload);
+      const { data } = await apiClient.post('/api/predict', payload);
       setResult(data);
     } catch (err) {
       setApiErr(err.response?.data?.error || 'Prediction failed. Is the server running?');

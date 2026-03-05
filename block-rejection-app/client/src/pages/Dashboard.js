@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import apiClient from '../api';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   RadarChart, Radar, PolarGrid, PolarAngleAxis, Cell,
@@ -60,7 +60,7 @@ export default function Dashboard() {
   const [meta, setMeta] = useState(null);
 
   useEffect(() => {
-    axios.get('/api/meta').then(r => setMeta(r.data)).catch(() => {});
+    apiClient.get('/api/meta').then(r => setMeta(r.data)).catch(() => {});
   }, []);
 
   const modelResults = meta?.all_results ?? [];

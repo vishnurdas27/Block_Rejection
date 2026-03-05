@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
+import apiClient from '../api';
 import Card, { CardTitle } from '../components/Card';
 
 const riskColor = { Low: '#10b981', Medium: '#f59e0b', High: '#ef4444' };
@@ -22,7 +22,7 @@ export default function History() {
   const load = useCallback(async (p = 1) => {
     setLoading(true); setError('');
     try {
-      const { data: d } = await axios.get(`/api/history?page=${p}&limit=15`);
+      const { data: d } = await apiClient.get(`/api/history?page=${p}&limit=15`);
       setData(d); setPage(p);
     } catch {
       setError('Could not load history. MongoDB may not be running.');
@@ -36,7 +36,7 @@ export default function History() {
   const handleDelete = async id => {
     if (!window.confirm('Delete this prediction record?')) return;
     try {
-      await axios.delete(`/api/history/${id}`);
+      await apiClient.delete(`/api/history/${id}`);
       load(page);
     } catch { alert('Delete failed.'); }
   };
